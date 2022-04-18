@@ -9,6 +9,9 @@ export class FeedItem extends Model<FeedItem> {
   @Column
   public url!: string;
 
+  @Column
+  public user!: string;
+
   @Default(0)
   @Column
   public numberOfLikes!: number;
