@@ -10,6 +10,9 @@ export class FeedItem extends Model<FeedItem> {
   public url!: string;
 
   @Column
+  public numberOfLikes!: number;
+
+  @Column
   @CreatedAt
   public createdAt: Date = new Date();
 
