@@ -1,7 +1,19 @@
-<ion-button 
+<!-- <ion-button 
   color="primary" 
   type="submit"
-  [disabled]="!isLoggedIn"
   (click)="presentUploadForm($event)">
   Create a New Post
-</ion-button>
+</ion-button> -->
+
+
+
+  <ion-fab class="fixed-button"  vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button 
+    (click)="presentUploadForm($event)">
+    <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+ 
+
+
+

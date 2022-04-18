@@ -1,13 +1,13 @@
 export const config = {
   "dev": {
-    "username": process.env.POSTGRES_USERNAME,
-    "password": process.env.POSTGRES_PASSWORD,
-    "database": process.env.POSTGRES_DATABASE,
-    "host": process.env.POSTGRES_HOST,
+    "username": "udagramjoanadev",
+    "password": "udagramjoanadev155",
+    "database": "udagramjoanadev",
+    "host": "udagramjoanadev.c3kbifce4ql9.us-east-2.rds.amazonaws.com",
     "dialect": "postgres",
-    "aws_reigion": process.env.POSTGRES_REGION,
-    "aws_profile": process.env.POSTGRES_PROFILE,
-    "aws_media_bucket": process.env.POSTGRES_MEDIA_BUCKET,
+    "aws_reigion": "us-east-2",
+    "aws_profile": "default",
+    "aws_media_bucket": "udagram-joana-dev",
     "url": process.env.URL
   },
   "prod": {
@@ -18,6 +18,6 @@ export const config = {
     "dialect": "postgres"
   },
   "jwt": {
-    "secret": process.env.JWT_SECRET
+    "secret": "hello"
   }
 }

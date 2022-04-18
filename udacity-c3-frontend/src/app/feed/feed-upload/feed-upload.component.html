@@ -1,3 +1,7 @@
+
+<ion-buttons slot="end">
+  <ion-button (click)="cancel()">X</ion-button>
+  </ion-buttons>
 <form [formGroup]="uploadForm" (submit)="onSubmit($event)">`
     <label>
         <input type="file" (change)="selectImage($event)" accept="image/*" style="display:none"/>
@@ -7,8 +11,10 @@
         </a>
     </label>
     <ion-item>
-        <ion-label position="floating" color="primary">Caption</ion-label>
+        <ion-label position="floating" color="primary">Descrição</ion-label>
         <ion-input type="text" formControlName="caption" required></ion-input>
+        <ion-label position="floating" color="primary">Utilizador</ion-label>
+        <ion-input type="text" formControlName="user_name" required></ion-input>
       </ion-item>
       <ion-button 
         color="primary" 
@@ -16,4 +22,6 @@
         [disabled]="!uploadForm.valid || !file">
         Post
       </ion-button>
+
+      
 </form>

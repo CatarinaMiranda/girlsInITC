@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { AuthMenuUserComponent } from './auth-menu-user/auth-menu-user.component';
 
-import { AuthService } from '../services/auth.service';
 import { AuthLoginComponent } from '../auth-login/auth-login.component';
+import { AuthMenuUserComponent } from './auth-menu-user/auth-menu-user.component';
 import { AuthRegisterComponent } from '../auth-register/auth-register.component';
+import { AuthService } from '../services/auth.service';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-auth-menu-button',

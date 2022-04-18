@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { FeedUploadComponent } from '../feed-upload.component';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { FeedUploadComponent } from '../feed-upload.component';
+import { ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -9,28 +10,29 @@ import { Subscription } from 'rxjs';
   templateUrl: './feed-upload-button.component.html',
   styleUrls: ['./feed-upload-button.component.scss'],
 })
-export class FeedUploadButtonComponent implements OnInit, OnDestroy {
+export class FeedUploadButtonComponent {
 
   isLoggedIn: Boolean;
   loginSub: Subscription;
 
   constructor(private modalController: ModalController, private auth: AuthService) { }
 
-  ngOnInit() {
-    this.auth.currentUser$.subscribe((user) => {
-      this.isLoggedIn = user !== null;
-    });
-  }
+  // ngOnInit() {
+  //   this.auth.currentUser$.subscribe((user) => {
+  //     this.isLoggedIn = user !== null;
+  //   });
+  // }
 
-  ngOnDestroy(): void {
-    if (this.loginSub) {
-      this.loginSub.unsubscribe();
-    }
-  }
+  // ngOnDestroy(): void {
+  //   if (this.loginSub) {
+  //     this.loginSub.unsubscribe();
+  //   }
+  // }
 
   async presentUploadForm(ev: any) {
     const modal = await this.modalController.create({
       component: FeedUploadComponent,
+      backdropDismiss: true
     });
     return await modal.present();
   }

@@ -1,9 +1,11 @@
-import { Router, Request, Response } from 'express';
-import { FeedItem } from '../models/FeedItem';
-import { NextFunction } from 'connect';
-import * as jwt from 'jsonwebtoken';
 import * as AWS from '../../../../aws';
 import * as c from '../../../../config/config';
+import * as jwt from 'jsonwebtoken';
+
+import { Request, Response, Router } from 'express';
+
+import { FeedItem } from '../models/FeedItem';
+import { NextFunction } from 'connect';
 
 const router: Router = Router();
 
@@ -49,7 +51,7 @@ router.get('/:id',
 
 // update a specific resource number of likes ++
 router.patch('/likes/:id', 
-    requireAuth, 
+    //requireAuth, 
     async (req: Request, res: Response) => {
     
         let { id } = req.params;
@@ -65,7 +67,7 @@ router.patch('/likes/:id',
 
 // Get a signed url to put a new item in the bucket
 router.get('/signed-url/:fileName', 
-    requireAuth, 
+    //requireAuth, 
     async (req: Request, res: Response) => {
     let { fileName } = req.params;
     const url = AWS.getPutSignedUrl(fileName);
@@ -75,15 +77,20 @@ router.get('/signed-url/:fileName',
 // Post meta data and the filename after a file is uploaded 
 // NOTE the file name is they key name in the s3 bucket.
 // body : {caption: string, fileName: string};
-router.post('/', 
-    requireAuth, 
+router.post('/',
     async (req: Request, res: Response) => {
     const caption = req.body.caption;
+    const user = req.body.user;
     const fileName = req.body.url;
 
     // check Caption is valid
     if (!caption) {
         return res.status(400).send({ message: 'Caption is required or malformed' });
+    }
+
+    // check Caption is valid
+    if (!user) {
+        return res.status(400).send({ message: 'User Name is required or malformed' });
     }
 
     // check Filename is valid
@@ -93,7 +100,8 @@ router.post('/',
 
     const item = await new FeedItem({
             caption: caption,
-            url: fileName
+            url: fileName,
+            user: user
     });
 
     const saved_item = await item.save();
