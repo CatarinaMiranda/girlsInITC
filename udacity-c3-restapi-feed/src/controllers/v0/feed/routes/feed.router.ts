@@ -49,7 +49,7 @@ router.get('/:id',
 
 // update a specific resource number of likes
 router.patch('/likes/:id', 
-    //requireAuth, 
+    requireAuth, 
     async (req: Request, res: Response) => {
     
         const numberOfLikes = req.body.numberOfLikes;
