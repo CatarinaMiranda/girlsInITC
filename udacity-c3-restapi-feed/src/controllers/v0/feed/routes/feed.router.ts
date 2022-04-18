@@ -47,33 +47,19 @@ router.get('/:id',
     res.send(item);
 });
 
-// update a specific resource number of likes
+// update a specific resource number of likes ++
 router.patch('/likes/:id', 
     requireAuth, 
     async (req: Request, res: Response) => {
     
-        const numberOfLikes = req.body.numberOfLikes;
-    
-        // check numberOfLikes is valid
-        if (!numberOfLikes || numberOfLikes < 0) {
-            return res.status(400).send({ message: 'numberOfLikes is required or malformed' });
-        }
-
         let { id } = req.params;
         const item = await FeedItem.findByPk(id);
 
-        item.numberOfLikes = numberOfLikes;
-
-        try {
-            
-            const saved_item = await item.save();
-            res.status(201).send(saved_item);
-
-        } catch (e: unknown) {
-            return res.status(400).send({ message: 'numberOfLikes is malformed. Try an integer.' });
-        }
+        item.numberOfLikes = item.numberOfLikes + 1;
         
-        
+        const saved_item = await item.save();
+        res.status(201).send(saved_item);
+       
 });
 
 
