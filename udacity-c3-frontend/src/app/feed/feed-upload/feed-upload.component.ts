@@ -51,16 +51,24 @@ export class FeedUploadComponent implements OnInit {
 
   }
 
-  onSubmit($event) {
+  async onSubmit($event) {
     $event.preventDefault();
-    this.loadingController.create();
-
-    if (!this.uploadForm.valid || !this.file) { return; }
-    this.feed.uploadFeedItem(this.uploadForm.controls.caption.value, this.uploadForm.controls.user_name.value ,this.file)
-      .then((result) => {
-        this.modalController.dismiss();
-        this.loadingController.dismiss();
+    if (!this.uploadForm.valid || !this.file) {
+      return;
+    }else{
+      const loading = await this.loadingController.create({
+        cssClass: 'loader',
+        message: 'Por favor espere...',
+        backdropDismiss: true,
+        translucent: true,
       });
+      loading.present().then( () => {
+        this.feed.uploadFeedItem(this.uploadForm.controls.caption.value, this.uploadForm.controls.user_name.value ,this.file)
+          .then((result) => {
+            this.modalController.dismiss();
+             loading.dismiss();
+          });
+        });
+    }
   }
-
 }

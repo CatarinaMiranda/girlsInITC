@@ -1,4 +1,6 @@
+
 <ion-card class="photo-card" *ngIf="feedItem" >
+ 
   <ion-card-header>
     <ion-card-title>{{feedItem.user}}</ion-card-title>
   </ion-card-header>
@@ -7,7 +9,8 @@
     <ion-card-subtitle>Get Started</ion-card-subtitle>
     <ion-card-title></ion-card-title>
   </ion-card-header> -->
-  <ion-card-content fullscreen>
+  <ion-card-content>
+    
     <p>{{feedItem.caption}}</p>
   </ion-card-content>
         
@@ -19,7 +22,7 @@
           <button class="buttonBackground" (click)="likePhoto(feedItem)">
 
            
-            <ion-icon #button size="large" name="heart" color="danger"></ion-icon>
+            <ion-icon size="large" name="heart" color="danger"></ion-icon>
       
           </button>
           <span class="text">{{feedItem.numberOfLikes}}</span>
@@ -29,4 +32,5 @@
 
     </ion-row>
   </ion-footer>
+
 </ion-card>
