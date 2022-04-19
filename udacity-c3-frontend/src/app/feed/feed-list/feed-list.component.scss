@@ -1,7 +1,38 @@
 
   .feed {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    background: var(--ion-color-light-tint);
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
+
+  /* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+  .feed {
+    flex-direction: column;
+  }
+}
+
+ion-content {
+  ion-col {
+    display: flex;
+  }
+}
+
+ion-card {
+  img {
+    margin: 10px auto;
+    height: 25vh !important;
+    width: auto !important;
+    max-width: 85%;
+    align-items: center;
+  }
+  ion-card-content {
+    padding: 0 !important;
+    ion-card-title {
+      padding-top: 1.5rem !important;
+      padding-bottom: 1.5rem !important;
+    }
+  }
+}

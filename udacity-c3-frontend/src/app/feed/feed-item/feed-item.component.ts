@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
+import { BehaviorSubject } from 'rxjs';
 import { FeedItem } from '../models/feed-item.model';
 import { FeedProviderService } from '../services/feed.provider.service';
 
@@ -11,20 +12,16 @@ import { FeedProviderService } from '../services/feed.provider.service';
 })
 export class FeedItemComponent implements OnInit {
   @Input() feedItem: FeedItem;
-
+  //@Input() feedItem: FeedItem
   constructor(
     private feed: FeedProviderService
   ) { }
 
   ngOnInit() {}
 
-  likePhoto(event) {
+  async likePhoto(feedItem) {
 
-    this.feed.likeItem(this.feedItem.id)
-    .then((result) => {
-     
-    });
-
+    await this.feed.likeItem(feedItem.id);
   }
 
 }

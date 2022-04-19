@@ -54,7 +54,7 @@ export class ApiService {
 
   patch(endpoint, data?): Promise<any> {
     const url = `${API_HOST}${endpoint}`;
-    return this.http.patch<HttpEvent<any>>(url, data, this.httpOptions)
+    return  this.http.patch<HttpEvent<any>>(url, data, this.httpOptions)
             .toPromise()
             .catch((e) => {
               this.handleError(e);
