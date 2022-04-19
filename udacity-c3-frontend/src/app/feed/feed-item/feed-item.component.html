@@ -19,7 +19,7 @@
           <button class="buttonBackground" (click)="likePhoto(feedItem)">
 
            
-            <ion-icon  size="large"  [name]="feedItem.numberOfLikes > 0? 'heart':'heart-empty'" color="danger"></ion-icon>
+            <ion-icon #button size="large" name="heart" color="danger"></ion-icon>
       
           </button>
           <span class="text">{{feedItem.numberOfLikes}}</span>
