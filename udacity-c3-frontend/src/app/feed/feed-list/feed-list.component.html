@@ -1,8 +1,8 @@
-
-<div class="feed">
-
-  <app-feed-item class="ion-padding"
-    *ngFor="let item of (feedItems | async)"
-    [feedItem]="item">
+<div class="feed ion-padding">
+  <app-feed-item
+    class="ion-padding"
+    *ngFor="let item of feedItems | async"
+    [feedItem]="item"
+  >
   </app-feed-item>
 </div>

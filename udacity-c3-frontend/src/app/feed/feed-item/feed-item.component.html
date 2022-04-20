@@ -1,36 +1,25 @@
-
-<ion-card class="photo-card" *ngIf="feedItem" >
- 
+<ion-card class="photo-card" *ngIf="feedItem">
   <ion-card-header>
-    <ion-card-title>{{feedItem.user}}</ion-card-title>
+    <ion-card-title>{{ feedItem.user }}</ion-card-title>
   </ion-card-header>
   <ion-img [src]="feedItem.url"></ion-img>
-  <!-- <ion-card-header>
-    <ion-card-subtitle>Get Started</ion-card-subtitle>
-    <ion-card-title></ion-card-title>
-  </ion-card-header> -->
   <ion-card-content>
-    
-    <p>{{feedItem.caption}}</p>
+    <p>{{ feedItem.caption }}</p>
   </ion-card-content>
-        
+
   <ion-footer>
     <ion-row>
-    
       <ion-col center text-center>
-
-          <button class="buttonBackground" (click)="likePhoto(feedItem)">
-
-           
-            <ion-icon size="large" name="heart" color="danger"></ion-icon>
-      
-          </button>
-          <span class="text">{{feedItem.numberOfLikes}}</span>
-  
-       
+        <button class="buttonBackground" (click)="likePhoto(feedItem)">
+          <ion-icon
+            size="large"
+            class="animate"
+            name="heart"
+            color="danger"
+          ></ion-icon>
+        </button>
+        <span class="text">{{ feedItem.numberOfLikes }}</span>
       </ion-col>
-
     </ion-row>
   </ion-footer>
-
 </ion-card>
