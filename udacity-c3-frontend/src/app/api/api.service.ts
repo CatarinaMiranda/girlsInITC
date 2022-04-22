@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { v4 as uuidv4 } from 'uuid';
 import {
   HttpClient,
   HttpHeaders,
@@ -71,8 +72,19 @@ export class ApiService {
       });
   }
 
-  async upload(endpoint: string, file: File, payload: any): Promise<any> {
-    const signed_url = (await this.get(`${endpoint}/signed-url/${file.name}`))
+
+  async uploadPost(endpoint: string, file: File, caption: string, user: string): Promise<any> {
+
+    const fileName = uuidv4() + "." +file.name.split('.').pop();;
+    console.log("filename: " + fileName);
+
+    const payload = {
+      caption: caption,
+      url: fileName,
+      user: user,
+    }
+
+    const signed_url = (await this.get(`${endpoint}/signed-url/${fileName}`))
       .url;
 
     const headers = new HttpHeaders({ "Content-Type": file.type });
@@ -96,3 +108,6 @@ export class ApiService {
     return body || {};
   }
 }
+
+
+

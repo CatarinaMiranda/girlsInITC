@@ -24,13 +24,9 @@ export class FeedProviderService {
   async uploadFeedItem(
     caption: string,
     user_name: string,
-    file: File
+    file: File,
   ): Promise<any> {
-    const res = await this.api.upload("/feed", file, {
-      caption: caption,
-      url: file.name,
-      user: user_name,
-    });
+    const res = await this.api.uploadPost("/feed", file, caption, user_name);
     const feed = [res, ...this.currentFeed$.value];
     this.currentFeed$.next(feed);
     return res;
